@@ -1,3 +1,5 @@
+oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/lambdageneration.omp.json" | Invoke-Expression
+
 function Clear-Cache {
     Write-Host "Clearing cache..." -ForegroundColor Cyan
 
