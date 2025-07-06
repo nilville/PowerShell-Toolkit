@@ -1,6 +1,6 @@
-<# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/rudolfs-light.omp.json" | Invoke-Expression #>
+ oh-my-posh.exe --init --shell pwsh --config "C:\Users\inir008\Downloads\oh-my-posh-theme.json" | Invoke-Expression 
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/sonicboom_dark.omp.json" | Invoke-Expression #>
-oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/clean-detailed.omp.json" | Invoke-Expression
+<# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/clean-detailed.omp.json" | Invoke-Expression #>
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/lambdageneration.omp.json" | Invoke-Expression #>
 
 function Clear-Cache {
@@ -121,14 +121,20 @@ function Free-Memory {
     Write-Host "Memory cleanup completed." -ForegroundColor Green
 }
 
-function Get-CPUUsage {
-    $cpuUsage = Get-Counter '\Processor(_Total)\% Processor Time'
-    Write-Host "Current CPU Usage: $($cpuUsage.CounterSamples.CookedValue)%" -ForegroundColor Green
-}
+function pc-usage {
+    # Get CPU usage
+    $cpu = Get-Counter '\Processor(_Total)\% Processor Time'
+    $cpuUsage = [math]::Round($cpu.CounterSamples.CookedValue, 2)
 
-function Get-MemoryUsage {
-    $memoryUsage = Get-Counter '\Memory\Available MBytes'
-    Write-Host "Available Memory: $($memoryUsage.CounterSamples.CookedValue) MB" -ForegroundColor Green
+    # Get memory usage
+    $os = Get-CimInstance Win32_OperatingSystem
+    $totalMem = $os.TotalVisibleMemorySize
+    $freeMem = $os.FreePhysicalMemory
+    $usedMem = $totalMem - $freeMem
+    $memUsagePercent = [math]::Round(($usedMem / $totalMem) * 100, 2)
+
+    Write-Host "CPU Usage: $cpuUsage%" -ForegroundColor Green
+    Write-Host "RAM Usage: $memUsagePercent%" -ForegroundColor Green
 }
 
 function url {
@@ -149,7 +155,6 @@ function ls-date {
     Get-ChildItem -Path $Path | Sort-Object CreationTime | Format-Table Name, CreationTime, Length, Mode
 }
 
-
 function help-profile {
     Write-Host "Available Custom Functions:" -ForegroundColor Cyan
     Write-Host "1. Clear-Cache: Clears various cache locations." -ForegroundColor Yellow
@@ -167,8 +172,7 @@ function help-profile {
     Write-Host "13. Reboot-PC: Reboots the computer." -ForegroundColor Yellow
     Write-Host "14. open: Opens a file or directory with the default application." -ForegroundColor Yellow
     Write-Host "15. Free-Memory: Frees up memory." -ForegroundColor Yellow
-    Write-Host "16. Get-CPUUsage: Displays current CPU usage." -ForegroundColor Yellow
-    Write-Host "17. Get-MemoryUsage: Displays available memory." -ForegroundColor Yellow
-    Write-Host "18. url: Opens a URL in your default browser." -ForegroundColor Yellow
-    Write-Host "19. ls-date: Lists files sorted by creation date." -ForegroundColor Yellow
+    Write-Host "16. pc-usage: Displays current CPU and RAM usage." -ForegroundColor Yellow
+    Write-Host "17. url: Opens a URL in your default browser." -ForegroundColor Yellow
+    Write-Host "18. ls-date: Lists files sorted by creation date." -ForegroundColor Yellow
 }
