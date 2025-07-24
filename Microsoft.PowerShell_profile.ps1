@@ -1,7 +1,12 @@
- oh-my-posh.exe --init --shell pwsh --config "C:\Users\inir008\Downloads\oh-my-posh-theme.json" | Invoke-Expression 
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/sonicboom_dark.omp.json" | Invoke-Expression #>
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/clean-detailed.omp.json" | Invoke-Expression #>
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/lambdageneration.omp.json" | Invoke-Expression #>
+<# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/gruvbox.omp.json" | Invoke-Expression #>
+<# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/kali.omp.json" | Invoke-Expression #>
+<# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/pure.omp.json" | Invoke-Expression #>
+<# oh-my-posh.exe --init --shell pwsh | Invoke-Expression #>
+
+#------------enable one of the above themes by uncommenting it------------#
 
 function Clear-Cache {
     Write-Host "Clearing cache..." -ForegroundColor Cyan
