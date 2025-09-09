@@ -4,6 +4,8 @@
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/gruvbox.omp.json" | Invoke-Expression #>
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/kali.omp.json" | Invoke-Expression #>
 <# oh-my-posh.exe --init --shell pwsh --config "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/pure.omp.json" | Invoke-Expression #>
+<# oh-my-posh.exe --init --shell pwsh --config "https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/patriksvensson.omp.json" | Invoke-Expression #>
+<# oh-my-posh.exe --init --shell pwsh --config "https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/catppuccin_mocha.omp.json" | Invoke-Expression #>
 <# oh-my-posh.exe --init --shell pwsh | Invoke-Expression #>
 
 #------------enable one of the above themes by uncommenting it------------#
